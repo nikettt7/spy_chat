@@ -8,7 +8,7 @@ import colorama
 STATUS_MESSAGES = ['Hey there I\'m new', 'Available', 'On a Mission']
 
 colorama.init()
-cprint("Hey there! Let\'s get started...", "blue")
+cprint("Hey there! Let\'s get started...", "blue","on_green")
 
 question = "Would you like to continue as " + spy.salutation + " " + spy.name + "(1) or a new user(0)?(1/0): "
 existing = int(raw_input(question))                                              #taking input
