@@ -89,7 +89,7 @@ def select_a_friend():                                        #selection functio
                                                    friend.rating)
         item_number = item_number + 1
 
-    friend_choice = raw_input("Choose from your friends")
+    friend_choice = raw_input("Choose from your friends \n")
 
     friend_choice_position = int(friend_choice) - 1
 
@@ -106,10 +106,16 @@ def send_message():                                                         #3  
     Steganography.encode(original_image, output_path, text)
 
     new_chat = ChatMessage(text,True)
+    if len(text) > 0:
+            friends[friend_choice].chats.append(new_chat)
+            print "Your secret message image is ready !"
+    else:
+        abc=raw_input("No secret message entered ! Do you wanna try again? ")
+        if abc.Upper()=="Y":
 
-    friends[friend_choice].chats.append(new_chat)
-
-    print "Your secret message image is ready!"
+            send_message()
+        else:
+            print "\nBye! "
 
 
 def read_message():                                                           #4 decode the stegnographic message
@@ -131,7 +137,7 @@ def read_chat_history():                                              #if you ha
                                                                       #only then you can read
     read_for = select_a_friend()
 
-    print '\n6'
+    print '\n'
 
     for chat in friends[read_for].chats:
         if chat.sent_by_me:
@@ -204,4 +210,4 @@ elif existing == 0 :
         print 'Please add a valid spy name!!!'
 
 else:
-    print"Please enter appropriate choice.\n"
+    print "Please enter appropriate choice.\n"
