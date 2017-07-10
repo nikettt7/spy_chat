@@ -1,11 +1,14 @@
 from spy_details import spy, Spy, ChatMessage, friends                          #importing details from spy details
 from steganography.steganography import Steganography                           #importing steganography function
 from datetime import datetime                                                   #though not required here
-import time                                                                     #for delay function
+import time                 #for delay function
+import sys
+from termcolor import colored, cprint                                           #for coloring the text
+import colorama
 STATUS_MESSAGES = ['Hey there I\'m new', 'Available', 'On a Mission']
 
-
-print "Hey there! Let\'s get started..."
+colorama.init()
+cprint("Hey there! Let\'s get started...", "blue")
 
 question = "Would you like to continue as " + spy.salutation + " " + spy.name + "(1) or a new user(0)?(1/0): "
 existing = int(raw_input(question))                                              #taking input
@@ -181,8 +184,8 @@ def start_chat(spy):
                     time.sleep(3)
                 else:
                     show_menu = False
-        else:
-            print 'Sorry you are not of the correct age to be a spy'
+    else:
+         print 'Sorry you are not of the correct age to be a spy'
 
 
 if existing == 1 :                                                #continuing with previous user James Bond
@@ -192,7 +195,7 @@ elif existing == 0 :
 
     spy = Spy('','',0,0.0)                                        #the spy variable is blank now
 
-
+    colorama.init()
     spy.name = raw_input("Welcome to spy chat, you must tell me your spy name first: ")
 
     if len(spy.name) > 0:                                        #new user details
